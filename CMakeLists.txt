@@ -26,7 +26,7 @@ set(CMAKE_C_FLAGS_RELEASE "-Ofast -flto=auto -fuse-linker-plugin -floop-nest-opt
 #set(RV32ESIM_DISABLE_LOGGING 0)#Speed boost (avoid checking if enabled, allows compiler to optimize some things more, etc)
 #set(RV32ESIM_C 0)#Support compressed extension
 
-set(VSEMU_SOURCES src/cli/main.c src/libvsemu/cmake_config.h.in include/libvsemu.h)
+set(VSEMU_SOURCES src/libvsemu/version.c include/libvsemu.h src/libvsemu/libvsemu.version)
 
 if (CMAKE_C_BYTE_ORDER STREQUAL LITTLE_ENDIAN)
     set(IS_LITTLE_ENDIAN 1)
@@ -34,20 +34,23 @@ else()
     set(IS_LITTLE_ENDIAN 0)
 endif()
 
-configure_file(src/libvsemu/cmake_config.h.in src/libvsemu/cmake_config.h)
+configure_file(src/libvsemu/version.c.in src/libvsemu/version.c)
 
 add_library(vsemu_shared SHARED ${VSEMU_SOURCES})
 add_library(vsemu_static STATIC ${VSEMU_SOURCES})
-target_include_directories(vsemu_shared PRIVATE include ${CMAKE_CURRENT_BINARY_DIR}/src/)
-target_include_directories(vsemu_static PRIVATE include ${CMAKE_CURRENT_BINARY_DIR}/src/)
+target_include_directories(vsemu_shared PRIVATE include ${CMAKE_CURRENT_BINARY_DIR}/src/libvsemu)
+target_include_directories(vsemu_static PRIVATE include ${CMAKE_CURRENT_BINARY_DIR}/src/libvsemu)
 set_property(TARGET vsemu_shared PROPERTY OUTPUT_NAME vsemu)
 set_property(TARGET vsemu_static PROPERTY OUTPUT_NAME vsemu)
+set(CMAKE_SHARED_LINKER_FLAGS ${CMAKE_SHARED_LINKER_FLAGS} "-Wl,--version-script=${CMAKE_SOURCE_DIR}/src/libvsemu/libvsemu.version")
+#Dosn't work unfortunately
+#set(CMAKE_STATIC_LINKER_FLAGS ${CMAKE_STATIC_LINKER_FLAGS} "-Wl,--version-script=${CMAKE_SOURCE_DIR}/src/libvsemu/libvsemu.version")
 
 #vsemu CLI
-set(TEST_SOURCES src/main.c include/vsemu.h)
-add_executable(vsemu ${TEST_SOURCES})
-target_include_directories(vsemu PRIVATE include)
-target_link_libraries(vsemu vsemu_shared)
+set(VSEMU_CLI_SOURCES src/cli/main.c include/libvsemu.h)
+add_executable(vsemu-cli ${VSEMU_CLI_SOURCES})
+target_include_directories(vsemu-cli PRIVATE include)
+target_link_libraries(vsemu-cli vsemu_shared)
 
 #These don't work at stopping hidden symbols from being exported from the static library
 #target_link_libraries(vsemu vsemu_static)

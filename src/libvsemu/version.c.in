@@ -1,0 +1,51 @@
+/* version.c.in
+ * By: John Jekel
+ *
+ * File containing version info (filled in by CMAKE)
+ * The only C source file that should need changing with different build systems
+ *
+*/
+
+/* Constants And Defines */
+
+#define VERSION_MAJOR @vsemu_VERSION_MAJOR@
+#define VERSION_MINOR @vsemu_VERSION_MINOR@
+#define VERSION_STRING "libvsemu v@vsemu_VERSION_MAJOR@.@vsemu_VERSION_MINOR@"
+#define LITTLE_ENDIAN @IS_LITTLE_ENDIAN@
+//#define DISABLE_LOGGING @RV32ESIM_DISABLE_LOGGING@
+//#define UNSAFE_MODE @RV32ESIM_UNSAFE@
+//#define EXTENSION_C @RV32ESIM_C@
+
+/* Includes */
+
+#include "libvsemu.h"
+
+/* Types */
+
+//TODO
+
+/* Variables */
+
+//TODO
+
+/* Static Function Declarations */
+
+//TODO
+
+/* Function Implementations */
+
+uint16_t vsemu_version_major() {
+    return VERSION_MAJOR;
+}
+
+uint16_t vsemu_version_minor() {
+    return VERSION_MINOR;
+}
+
+const char* vsemu_version_string() {
+    return VERSION_STRING;
+}
+
+/* Static Function Implementations */
+
+//TODO

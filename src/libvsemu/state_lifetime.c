@@ -1,7 +1,7 @@
-/* VSEMU Cli Interface
+/* state_lifetime.c
  * By: John Jekel
  *
- * Cli interface to libvsemu
+ * File concerned with initialization and freeing of vsemu_state_t structs
  *
 */
 
@@ -10,8 +10,6 @@
 //TODO
 
 /* Includes */
-
-#include <stdio.h>
 
 #include "libvsemu.h"
 
@@ -29,13 +27,7 @@
 
 /* Function Implementations */
 
-int main(int argc, const char** argv) {
-    //Print version info
-    fputs(vsemu_version_string(), stderr);
-    fputs("\n\n", stderr);
-
-    return 0;//TODO
-}
+//TODO
 
 /* Static Function Implementations */
 

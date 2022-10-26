@@ -11,6 +11,7 @@
 /* Includes */
 
 #include <stdint.h>
+#include <stdbool.h>
 
 /* Constants And Defines */
 
@@ -18,7 +19,7 @@
 
 /* Types */
 
-typedef enum {} vsemu_return_code_t;//TODO error codes/success
+typedef enum {OK} vsemu_return_code_t;//TODO error codes/success
 
 typedef struct vsemu_buttons_t {
     //TODO would it be more efficient to use bitfields?
@@ -67,8 +68,8 @@ vsemu_return_code_t vsemu_tick(vsemu_state_t* state);
 
 //TODO add a function for updating the state of the buttons within state
 
-uint8_t vsemu_version_major();
-uint8_t vsemu_version_minor();
+uint16_t vsemu_version_major();
+uint16_t vsemu_version_minor();
 const char* vsemu_version_string();
 
 #endif//LIBVSEMU_H
