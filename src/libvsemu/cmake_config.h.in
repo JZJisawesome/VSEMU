@@ -1,0 +1,19 @@
+/* CMake config file for vsemu configuration
+ * Based on rv32esim
+ * By: John Jekel
+*/
+
+#ifndef CMAKE_CONFIG_H
+#define CMAKE_CONFIG_H
+
+/* Constants And Defines */
+
+#define VERSION_MAJOR @vsemu_VERSION_MAJOR@
+#define VERSION_MINOR @vsemu_VERSION_MINOR@
+#define VERSION_STRING "libvsemu v@vsemu_VERSION_MAJOR@.@vsemu_VERSION_MINOR@"
+#define LITTLE_ENDIAN @IS_LITTLE_ENDIAN@
+//#define DISABLE_LOGGING @RV32ESIM_DISABLE_LOGGING@
+//#define UNSAFE_MODE @RV32ESIM_UNSAFE@
+//#define EXTENSION_C @RV32ESIM_C@
+
+#endif//CMAKE_CONFIG_H
