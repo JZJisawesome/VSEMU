@@ -34,6 +34,16 @@ int main(int argc, const char** argv) {
     fputs(vsemu_version_string(), stderr);
     fputs("\n\n", stderr);
 
+    if (argc != 2) {
+        fputs("Error: Expected 1 argument (path to rom)\n", stderr);
+        exit(1);
+    }
+
+    vsemu_state_t state;
+    vsemu_init_state(&state);
+    vsemu_load_rom_file(&state, argv[1]);
+
+    vsemu_free_state(&state);
     return 0;//TODO
 }
 

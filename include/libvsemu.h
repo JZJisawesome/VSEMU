@@ -57,8 +57,11 @@ typedef struct vsemu_state_t {
 
 /* Function/Class Declarations */
 
-void vsemu_init_state(vsemu_state_t* state);
-void vsemu_free_state(vsemu_state_t* state);
+bool vsemu_init_state(vsemu_state_t* state);
+bool vsemu_reset(vsemu_state_t* state);//Cheaper than freeing and re-initing
+bool vsemu_load_rom_mem(vsemu_state_t* state, uint32_t size, const void* rom_image);
+bool vsemu_load_rom_file(vsemu_state_t* state, const char* rom_path);
+bool vsemu_free_state(vsemu_state_t* state);
 
 //Ticks the entire system forward 1 "amount" (TODO decide what that is)
 //TODO indicate here how often _tick should be called
@@ -68,8 +71,8 @@ vsemu_return_code_t vsemu_tick(vsemu_state_t* state);
 
 //TODO add a function for updating the state of the buttons within state
 
-uint16_t vsemu_version_major();
-uint16_t vsemu_version_minor();
-const char* vsemu_version_string();
+uint16_t vsemu_version_major(void);
+uint16_t vsemu_version_minor(void);
+const char* vsemu_version_string(void);
 
 #endif//LIBVSEMU_H

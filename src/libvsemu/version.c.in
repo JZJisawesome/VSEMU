@@ -34,15 +34,15 @@
 
 /* Function Implementations */
 
-uint16_t vsemu_version_major() {
+uint16_t vsemu_version_major(void) {
     return VERSION_MAJOR;
 }
 
-uint16_t vsemu_version_minor() {
+uint16_t vsemu_version_minor(void) {
     return VERSION_MINOR;
 }
 
-const char* vsemu_version_string() {
+const char* vsemu_version_string(void) {
     return VERSION_STRING;
 }
 
