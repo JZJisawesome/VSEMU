@@ -12,6 +12,7 @@
 /* Includes */
 
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "libvsemu.h"
 
@@ -42,6 +43,9 @@ int main(int argc, const char** argv) {
     vsemu_state_t state;
     vsemu_init_state(&state);
     vsemu_load_rom_file(&state, argv[1]);
+
+    //for (uint32_t i = 0; i < 100; ++i)
+    //    vsemu_tick(&state);
 
     vsemu_free_state(&state);
     return 0;//TODO

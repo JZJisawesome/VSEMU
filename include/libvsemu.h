@@ -35,8 +35,14 @@ typedef struct vsemu_buttons_t {
 } vsemu_buttons_t;
 
 typedef struct vsemu_registers_t {
-    uint16_t r[4];
-    uint16_t sp, bp, sr, pc, dr;
+    uint_fast32_t sp;//Only need 22 bits
+    uint_fast16_t r[4];
+    uint_fast16_t bp;
+    struct {
+        uint_fast8_t ds, cs;
+        bool n, z, s, c;
+    } sr;
+    uint_fast32_t pc;//Only need 22 bits
 } vsemu_registers_t;
 
 typedef struct vsemu_state_t {
@@ -59,7 +65,7 @@ typedef struct vsemu_state_t {
 
 bool vsemu_init_state(vsemu_state_t* state);
 bool vsemu_reset(vsemu_state_t* state);//Cheaper than freeing and re-initing
-bool vsemu_load_rom_mem(vsemu_state_t* state, uint32_t size, const void* rom_image);
+bool vsemu_load_rom_mem(vsemu_state_t* state, uint_fast32_t size, const void* rom_image);
 bool vsemu_load_rom_file(vsemu_state_t* state, const char* rom_path);
 bool vsemu_free_state(vsemu_state_t* state);
 
@@ -71,8 +77,8 @@ vsemu_return_code_t vsemu_tick(vsemu_state_t* state);
 
 //TODO add a function for updating the state of the buttons within state
 
-uint16_t vsemu_version_major(void);
-uint16_t vsemu_version_minor(void);
+uint_fast16_t vsemu_version_major(void);
+uint_fast16_t vsemu_version_minor(void);
 const char* vsemu_version_string(void);
 
 #endif//LIBVSEMU_H

@@ -15,6 +15,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#include <assert.h>
 
 #include "libvsemu.h"
 
@@ -48,7 +49,7 @@ bool vsemu_reset(vsemu_state_t* state) {//Cheaper than freeing and re-initing
     return true;
 }
 
-bool vsemu_load_rom_mem(vsemu_state_t* state, uint32_t size, const void* rom_image) {
+bool vsemu_load_rom_mem(vsemu_state_t* state, uint_fast32_t size, const void* rom_image) {
     if (!state || !rom_image)
         return false;
 
@@ -88,6 +89,7 @@ bool vsemu_free_state(vsemu_state_t* state) {
 /* Static Function Implementations */
 
 bool acceptable_file_size(const char* rom_path) {
+    assert(rom_path);
 
     return true;//TODO implement
 }

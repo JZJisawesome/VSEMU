@@ -34,11 +34,11 @@
 
 /* Function Implementations */
 
-uint16_t vsemu_version_major(void) {
+uint_fast16_t vsemu_version_major(void) {
     return VERSION_MAJOR;
 }
 
-uint16_t vsemu_version_minor(void) {
+uint_fast16_t vsemu_version_minor(void) {
     return VERSION_MINOR;
 }
 
