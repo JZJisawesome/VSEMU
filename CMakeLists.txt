@@ -26,7 +26,7 @@ set(CMAKE_C_FLAGS_RELEASE "-Ofast -flto=auto -fuse-linker-plugin -floop-nest-opt
 #set(RV32ESIM_DISABLE_LOGGING 0)#Speed boost (avoid checking if enabled, allows compiler to optimize some things more, etc)
 #set(RV32ESIM_C 0)#Support compressed extension
 
-set(VSEMU_SOURCES src/libvsemu/state_lifetime.c src/libvsemu/fetch.c src/libvsemu/decode.c src/libvsemu/execute.c src/libvsemu/memory.c src/libvsemu/version.c src/libvsemu/registers.h include/libvsemu.h src/libvsemu/libvsemu.version)
+set(VSEMU_SOURCES src/libvsemu/state_lifetime.c src/libvsemu/tick.c src/libvsemu/fetch.c src/libvsemu/decode.c src/libvsemu/execute.c src/libvsemu/memory.c src/libvsemu/version.c src/libvsemu/fetch_decode.h src/libvsemu/registers.h include/libvsemu.h src/libvsemu/libvsemu.version)
 
 if (CMAKE_C_BYTE_ORDER STREQUAL LITTLE_ENDIAN)
     set(IS_LITTLE_ENDIAN 1)

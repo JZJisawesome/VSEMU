@@ -38,14 +38,19 @@ bool vsemu_init_state(vsemu_state_t* state) {
         return false;
 
     state->mem_raw = malloc(MEMORY_SIZE_BYTES);
-    return state->mem_raw != 0;
+    if (!state->mem_raw)
+        return false;
+
+    return vsemu_reset(state);
 }
 
-bool vsemu_reset(vsemu_state_t* state) {//Cheaper than freeing and re-initing
+bool vsemu_reset(vsemu_state_t* state) {//Cheaper than freeing and re-initing; requires the rom to be reloaded as well
     if (!state)
         return false;
 
-    //TODO
+    memset(state->mem_raw, 0, MEMORY_SIZE_BYTES);
+    //TODO clear other things
+
     return true;
 }
 

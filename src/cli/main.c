@@ -41,14 +41,24 @@ int main(int argc, const char** argv) {
     }
 
     vsemu_state_t state;
-    vsemu_init_state(&state);
-    vsemu_load_rom_file(&state, argv[1]);
+    if (!vsemu_init_state(&state)) {
+        fputs("Error: Failed to init state\n", stderr);
+        exit(2);
+    }
+    if (!vsemu_load_rom_file(&state, argv[1])) {
+        fputs("Error: Failed to load rom\n", stderr);
+        exit(3);
+    }
 
     //for (uint32_t i = 0; i < 100; ++i)
     //    vsemu_tick(&state);
 
-    vsemu_free_state(&state);
-    return 0;//TODO
+    if (!vsemu_free_state(&state)) {
+        fputs("Error: Failed to free state\n", stderr);
+        exit(4);
+    }
+
+    return 0;
 }
 
 /* Static Function Implementations */

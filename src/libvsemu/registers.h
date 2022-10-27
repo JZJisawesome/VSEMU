@@ -15,17 +15,9 @@
 
 #include "libvsemu.h"
 
-/* Constants And Defines */
-
-//TODO
-
 /* Types */
 
-typedef enum {SP, R1, R2, R3, R4, BP, SR, PC, N_FLAG, Z_FLAG, S_FLAG, C_FLAG, DS, CS} register_name_t;
-
-/* Global Variables */
-
-//TODO
+typedef enum {SP = 0, R1 = 1, R2 = 2, R3 = 3, R4 = 4, BP = 5, SR = 6, PC = 7, N_FLAG, Z_FLAG, S_FLAG, C_FLAG, DS, CS, MR} register_name_t;
 
 /* Function Implementations */
 
@@ -54,8 +46,11 @@ inline __attribute__((always_inline)) uint_fast32_t r(register_name_t name, vsem
         case Z_FLAG: return register_struct.sr.z;
         case S_FLAG: return register_struct.sr.s;
         case C_FLAG: return register_struct.sr.c;
+        case MR: return (register_struct.r[3] << 16) | register_struct.r[2];
         default: assert(false);
     }
+
+    assert(false);
 }
 
 #endif//REGISTERS_H
