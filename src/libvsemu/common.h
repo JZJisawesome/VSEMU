@@ -5,12 +5,15 @@
  *
 */
 
-#ifndef FETCH_DECODE_H
-#define FETCH_DECODE_H
+#ifndef COMMON_H
+#define COMMON_H
 
 /* Includes */
 
 #include <stdint.h>
+#include <stdbool.h>
+
+#include "libvsemu.h"
 
 /* Constants And Defines */
 
@@ -26,7 +29,7 @@ typedef struct fetched_inst_t {
 
 typedef struct decoded_inst_t {
     //TODO
-} decoded_inst_t;
+} decoded_inst_t;//TODO this belongs in something like decode_execute.h
 
 /* Global Variables */
 
@@ -34,6 +37,8 @@ typedef struct decoded_inst_t {
 
 /* Function/Class Declarations */
 
-//TODO
+bool vsemu_fetch(const vsemu_state_t* state, fetched_inst_t* fetched_inst);
+bool vsemu_decode(const fetched_inst_t* inst, decoded_inst_t* decoded_inst);
+bool vsemu_execute(vsemu_state_t* state, const decoded_inst_t* decoded_inst);
 
-#endif//FETCH_DECODE_H
+#endif//COMMON_H

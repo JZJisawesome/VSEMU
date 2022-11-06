@@ -11,7 +11,7 @@
 
 /* Includes */
 
-//TODO
+#include "common.h"
 
 /* Types */
 
@@ -28,6 +28,7 @@
 /* Function Implementations */
 
 //TODO
+//NOTE: vsemu_fetch will be implemented here along with other memory access functions
 
 /* Static Function Implementations */
 

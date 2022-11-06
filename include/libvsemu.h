@@ -70,7 +70,7 @@ bool vsemu_load_rom_file(vsemu_state_t* state, const char* rom_path);
 bool vsemu_free_state(vsemu_state_t* state);
 
 //Ticks the entire system forward 1 "amount" (TODO decide what that is)
-//TODO indicate here how often _tick should be called
+//TODO indicate here how often _tick should be called per second
 //Tick will also render to some sort of framebuffer, we will have to figure that out
 //It is then up to the user to display the fb to the screen
 vsemu_return_code_t vsemu_tick(vsemu_state_t* state);

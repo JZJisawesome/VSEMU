@@ -12,7 +12,7 @@
 /* Includes */
 
 #include "libvsemu.h"
-#include "instructions.h"
+#include "common.h"
 
 /* Types */
 
@@ -29,7 +29,9 @@
 /* Function Implementations */
 
 vsemu_return_code_t vsemu_tick(vsemu_state_t* state) {
-    vsemu_fetch();
+    vsemu_fetch(state);
+    vsemu_decode(state);
+    vsemu_execute(state);
 }
 
 /* Static Function Implementations */

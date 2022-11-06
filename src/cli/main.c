@@ -50,8 +50,8 @@ int main(int argc, const char** argv) {
         exit(3);
     }
 
-    //for (uint32_t i = 0; i < 100; ++i)
-    //    vsemu_tick(&state);
+    for (uint32_t i = 0; i < 100; ++i)
+        vsemu_tick(&state);
 
     if (!vsemu_free_state(&state)) {
         fputs("Error: Failed to free state\n", stderr);

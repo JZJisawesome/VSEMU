@@ -5,6 +5,8 @@
  *
 */
 
+//TODO if these are only used in execute, then just move them there
+
 #ifndef REGISTERS_H
 #define REGISTERS_H
 

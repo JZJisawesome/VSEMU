@@ -11,6 +11,7 @@
 
 /* Includes */
 
+#include "common.h"
 #include "registers.h"
 
 /* Types */
