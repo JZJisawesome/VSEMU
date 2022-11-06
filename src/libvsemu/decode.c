@@ -27,7 +27,9 @@
 
 /* Function Implementations */
 
-//TODO
+bool vsemu_decode(const fetched_inst_t* inst, decoded_inst_t* decoded_inst) {
+    return false;//TODO
+}
 
 /* Static Function Implementations */
 

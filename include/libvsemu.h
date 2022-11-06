@@ -19,7 +19,7 @@
 
 /* Types */
 
-typedef enum {OK} vsemu_return_code_t;//TODO error codes/success
+typedef enum {VSEMU_RET_OK, VSEMU_RET_FAIL} vsemu_return_code_t;//TODO error codes/success
 
 typedef struct vsemu_buttons_t {
     //TODO would it be more efficient to use bitfields?

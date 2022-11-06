@@ -29,6 +29,9 @@
 /* Function Implementations */
 
 //TODO
+bool vsemu_execute(vsemu_state_t* state, const decoded_inst_t* decoded_inst) {
+    return false;//TODO
+}
 
 /* Static Function Implementations */
 
