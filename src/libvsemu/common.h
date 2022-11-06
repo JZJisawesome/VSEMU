@@ -40,7 +40,6 @@ typedef struct decoded_inst_t {
 
 //TODO make restrict
 bool vsemu_fetch(const vsemu_state_t* state, fetched_inst_t* fetched_inst);
-bool vsemu_decode(const vsemu_state_t* state, const fetched_inst_t* inst, decoded_inst_t* decoded_inst);
-bool vsemu_execute(vsemu_state_t* state, const decoded_inst_t* decoded_inst);
+bool vsemu_execute(vsemu_state_t* state, const fetched_inst_t* inst);
 
 #endif//COMMON_H
