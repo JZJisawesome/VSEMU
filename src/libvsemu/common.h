@@ -28,6 +28,7 @@ typedef struct fetched_inst_t {
 } fetched_inst_t;
 
 typedef struct decoded_inst_t {
+    bool invalid_inst;
     //TODO
 } decoded_inst_t;//TODO this belongs in something like decode_execute.h
 
@@ -39,7 +40,7 @@ typedef struct decoded_inst_t {
 
 //TODO make restrict
 bool vsemu_fetch(const vsemu_state_t* state, fetched_inst_t* fetched_inst);
-bool vsemu_decode(const fetched_inst_t* inst, decoded_inst_t* decoded_inst);
+bool vsemu_decode(const vsemu_state_t* state, const fetched_inst_t* inst, decoded_inst_t* decoded_inst);
 bool vsemu_execute(vsemu_state_t* state, const decoded_inst_t* decoded_inst);
 
 #endif//COMMON_H

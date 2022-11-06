@@ -17,7 +17,7 @@
 #ifdef NDEBUG
 #define vsemu_log(...) ((void)0)
 #else
-#define vsemu_log(...)  do {vsemu_log_func(state->tick_num, __VA_ARGS__);} while (0)
+#define vsemu_log(...) do {vsemu_log_func(state->tick_num, __VA_ARGS__);} while (0)
 #endif
 
 /* Function/Class Declarations */
