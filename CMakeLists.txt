@@ -19,14 +19,14 @@ endif()
 set(CMAKE_C_FLAGS "-I include -Wall -Wextra -g3")
 #set(CMAKE_C_FLAGS "-I include -Wall -Wextra -g3 -mno-sse2")
 set(CMAKE_C_FLAGS_DEBUG "-O0")
-set(CMAKE_C_FLAGS_RELEASE "-Ofast -flto=auto -fuse-linker-plugin -floop-nest-optimize -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans -fno-plt -fstdarg-opt -frename-registers -fweb -ftree-vectorize")
+set(CMAKE_C_FLAGS_RELEASE "-DNDEBUG -Ofast -flto=auto -fuse-linker-plugin -floop-nest-optimize -fipa-pta -fno-semantic-interposition -fdevirtualize-at-ltrans -fno-plt -fstdarg-opt -frename-registers -fweb -ftree-vectorize")
 
 #vsemu Library Targets
 #set(RV32ESIM_UNSAFE 0)#Speed boost; may cause out of bounds/etc problems if programs executing on the simulator go out-of-bounds/etc
 #set(RV32ESIM_DISABLE_LOGGING 0)#Speed boost (avoid checking if enabled, allows compiler to optimize some things more, etc)
 #set(RV32ESIM_C 0)#Support compressed extension
 
-set(VSEMU_SOURCES src/libvsemu/state_lifetime.c src/libvsemu/tick.c src/libvsemu/decode.c src/libvsemu/execute.c src/libvsemu/memory.c src/libvsemu/version.c src/libvsemu/common.h src/libvsemu/registers.h include/libvsemu.h src/libvsemu/libvsemu.version)
+set(VSEMU_SOURCES src/libvsemu/state_lifetime.c src/libvsemu/logging.c src/libvsemu/logging.h src/libvsemu/tick.c src/libvsemu/decode.c src/libvsemu/execute.c src/libvsemu/memory.c src/libvsemu/version.c src/libvsemu/common.h src/libvsemu/registers.h include/libvsemu.h src/libvsemu/libvsemu.version)
 
 if (CMAKE_C_BYTE_ORDER STREQUAL LITTLE_ENDIAN)
     set(IS_LITTLE_ENDIAN 1)

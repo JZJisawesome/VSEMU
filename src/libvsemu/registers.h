@@ -21,10 +21,14 @@
 
 typedef enum {SP = 0, R1 = 1, R2 = 2, R3 = 3, R4 = 4, BP = 5, SR = 6, PC = 7, N_FLAG, Z_FLAG, S_FLAG, C_FLAG, DS, CS, MR} register_name_t;
 
+/* Constants And Defines */
+
+#define REG(register_name) vsemu_reg_access_func(register_name, state->reg)
+
 /* Function Implementations */
 
 //Normally it is bad to pass structs by value, but since this is always inlined, it should make optimizations easier for the compiler
-inline __attribute__((always_inline)) uint_fast32_t r(register_name_t name, vsemu_registers_t register_struct) {
+inline __attribute__((always_inline)) uint_fast32_t vsemu_reg_access_func(register_name_t name, vsemu_registers_t register_struct) {
     switch (name) {
         case SP: return register_struct.sp;
         case R1: return register_struct.r[0];

@@ -47,6 +47,7 @@ typedef struct vsemu_registers_t {
 
 typedef struct vsemu_state_t {
     bool valid;
+    uint64_t tick_num;
 
     vsemu_buttons_t buttons;
 

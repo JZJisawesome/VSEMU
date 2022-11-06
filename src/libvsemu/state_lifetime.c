@@ -19,6 +19,7 @@
 
 #include "libvsemu.h"
 #include "common.h"
+#include "logging.h"
 
 /* Types */
 
@@ -50,8 +51,10 @@ bool vsemu_reset(vsemu_state_t* state) {//Cheaper than freeing and re-initing; r
         return false;
 
     memset(state->mem_raw, 0, MEMORY_SIZE_BYTES);
+    state->tick_num = 0;
     //TODO clear other things (set PC to reset vector + 0x7)
 
+    vsemu_log(0, "Reset completed.");
     return true;
 }
 
@@ -63,6 +66,8 @@ bool vsemu_load_rom_mem(vsemu_state_t* state, uint_fast32_t size, const void* ro
         return false;
 
     memcpy(state->mem_raw, rom_image, size);
+
+    vsemu_log(0, "Rom image loaded sucessfully from memory");
     return true;
 }
 
@@ -81,6 +86,8 @@ bool vsemu_load_rom_file(vsemu_state_t* state, const char* rom_path) {
     bool success = ferror(rom_file) == 0;
 
     fclose(rom_file);
+
+    vsemu_log(0, "Rom image \"%s\" loaded sucessfully", rom_path);
     return success;
 }
 
@@ -89,6 +96,8 @@ bool vsemu_free_state(vsemu_state_t* state) {
         return false;
 
     free(state->mem_raw);
+
+    vsemu_log(0, "VSEMU state freed");
     return true;
 }
 
