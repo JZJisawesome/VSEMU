@@ -17,7 +17,7 @@
 
 /* Constants And Defines */
 
-//TODO
+#define MEMORY_SIZE_BYTES (sizeof(uint16_t) * (1 << 22))
 
 /* Types */
 
@@ -37,6 +37,7 @@ typedef struct decoded_inst_t {
 
 /* Function/Class Declarations */
 
+//TODO make restrict
 bool vsemu_fetch(const vsemu_state_t* state, fetched_inst_t* fetched_inst);
 bool vsemu_decode(const fetched_inst_t* inst, decoded_inst_t* decoded_inst);
 bool vsemu_execute(vsemu_state_t* state, const decoded_inst_t* decoded_inst);

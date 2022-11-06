@@ -63,6 +63,7 @@ typedef struct vsemu_state_t {
 
 /* Function/Class Declarations */
 
+//TODO make restrict
 bool vsemu_init_state(vsemu_state_t* state);
 bool vsemu_reset(vsemu_state_t* state);//Cheaper than freeing and re-initing; requires the rom to be reloaded as well
 bool vsemu_load_rom_mem(vsemu_state_t* state, uint_fast32_t size, const void* rom_image);

@@ -33,6 +33,11 @@ You should have received a copy of the GNU General Public License\n\
 along with this program.  If not, see <https://www.gnu.org/licenses/>.\n\
 \n\
 \n\
+Partly developed with code from my rv32esim project from earlier this year.\n\
+I didn't open source that project, but for the purposes of this one, all code\n\
+from rv32esim in this project is released under the same license as above.\n\
+\n\
+\n\
 Developed with reference to parts of the MAME source code:\n\
 \n\
 MAME\n\

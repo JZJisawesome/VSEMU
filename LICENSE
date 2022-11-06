@@ -15,7 +15,12 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-Developed with reference to parts of the MAME source code:
+Partly developed with code from my rv32esim project from earlier this year.
+I didn't open source that project, but for the purposes of this one, all code
+from rv32esim in this project is released under the same license as above.
+
+
+Also developed with reference to parts of the MAME source code:
 
 MAME
 Copyright (C) 1997-2022  MAMEDev and contributors

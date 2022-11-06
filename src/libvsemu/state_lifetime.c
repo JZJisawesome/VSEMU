@@ -8,7 +8,7 @@
 /* Constants And Defines */
 
 //Size of the address space so that we can copy the whole rom we are given into the vsemu_state_t object
-#define MEMORY_SIZE_BYTES (sizeof(uint16_t) * (1 << 22))
+#define RESET_VECTOR
 
 /* Includes */
 
@@ -18,6 +18,7 @@
 #include <assert.h>
 
 #include "libvsemu.h"
+#include "common.h"
 
 /* Types */
 
@@ -49,7 +50,7 @@ bool vsemu_reset(vsemu_state_t* state) {//Cheaper than freeing and re-initing; r
         return false;
 
     memset(state->mem_raw, 0, MEMORY_SIZE_BYTES);
-    //TODO clear other things
+    //TODO clear other things (set PC to reset vector + 0x7)
 
     return true;
 }
