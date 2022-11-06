@@ -1,4 +1,4 @@
 VSEMU{
-  global: vsemu_init_state; vsemu_reset; vsemu_load_rom_mem; vsemu_load_rom_file; vsemu_free_state; vsemu_tick; vsemu_version_major; vsemu_version_minor; vsemu_version_string;
+  global: vsemu_init_state; vsemu_reset; vsemu_load_rom_mem; vsemu_load_rom_file; vsemu_free_state; vsemu_tick; vsemu_version_major; vsemu_version_minor; vsemu_version_string; vsemu_license_string;
   local: *;
 };

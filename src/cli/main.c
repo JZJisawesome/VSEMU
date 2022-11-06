@@ -13,6 +13,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "libvsemu.h"
 
@@ -36,8 +37,14 @@ int main(int argc, const char** argv) {
     fputs("\n\n", stderr);
 
     if (argc != 2) {
-        fputs("Error: Expected 1 argument (path to rom)\n", stderr);
+        fputs("Error: Expected 1 argument (path to rom or --version)\n", stderr);
         exit(1);
+    }
+
+    if (!strcmp(argv[1], "--version")) {
+        fputs(vsemu_license_string(), stderr);
+        fputs("\n\n", stderr);
+        exit(0);
     }
 
     vsemu_state_t state;

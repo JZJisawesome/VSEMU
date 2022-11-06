@@ -80,5 +80,6 @@ vsemu_return_code_t vsemu_tick(vsemu_state_t* state);
 uint_fast16_t vsemu_version_major(void);
 uint_fast16_t vsemu_version_minor(void);
 const char* vsemu_version_string(void);
+const char* vsemu_license_string(void);
 
 #endif//LIBVSEMU_H
